@@ -1,7 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
 
 
 function Login() {
+
+    const [loginData,setLoginData]=useState({email:"",password:""})
+    const infoHandler=(txt,val)=>{
+
+        if(txt==='email')
+        {
+            setLoginData((prevState=>{return{...prevState,email:val}}));
+        }
+        else if(txt==='password')
+        {
+            setLoginData((prevState=>{return{...prevState,password:val}}));
+        }
+
+        console.log(loginData);
+    }
   return (
     <>
         <div className='bg-neutral-600 w-1/3 m-auto mt-10 align-center p-5 rounded-2xl'>
@@ -9,11 +25,11 @@ function Login() {
                 <tbody>
                     <tr>
                         <td className='p-4 text-white text-xl'>Email</td>
-                        <td><input type="email" /></td>
+                        <td><input type="email" onChange={(e)=>{infoHandler('email',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td className='p-4 text-white text-xl'>Password</td>
-                        <td><input type="password" /></td>
+                        <td><input type="password"  onChange={(e)=>{infoHandler('password',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white'>Submit</button></td>
