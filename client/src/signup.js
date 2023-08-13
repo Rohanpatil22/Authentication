@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function Signup() {
 
@@ -26,6 +27,14 @@ function Signup() {
         console.log(signupData);
     }
 
+    const createUser=async ()=>{
+       
+        await axios.post("http://localhost:5000/api/v1/create",signupData)
+        .then((res)=>{
+            console.log(res);
+        })
+
+    }
   return (
     <>
      <div className='bg-neutral-600 w-1/3 m-auto mt-10 align-center p-5 rounded-2xl'>
@@ -48,7 +57,7 @@ function Signup() {
                         <td><input type="password" onChange={(e)=>{changeHandler('password',e.target.value)}} /></td>
                     </tr>
                     <tr>
-                        <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white'>Submit</button></td>
+                        <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white' onClick={createUser}>Submit</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -1,22 +1,23 @@
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const userSchema=new mongoose.Schema({
 
     name:{
         type:String,
-        required:true,
+      
     },
     email:{
         type:String,
-        required:true,
+       
     },
     mobno:{
         type:Number,
-        required:true,
+        
     },
     password:{
         tye:String,
-        required:true,
+        
     },
     token:{
         type:String,
@@ -24,4 +25,4 @@ const userSchema=new mongoose.Schema({
 },
 {timestamps:true});
 
-export default mongoose.model('loginData',userSchema);
+export default mongoose.model('Logindata',userSchema);
