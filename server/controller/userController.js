@@ -21,7 +21,8 @@ export const createUser=async(req,res)=>{
     }
 
     const bcryptPassword=await bcrypt.hash(password,10);
-    const newUser=await Logindata.create({name,email,mobno,password:bcryptPassword});
+   
+    const newUser=await Logindata.create({name,email,mobno, password:bcryptPassword});
 
     if(!newUser)
     {
@@ -29,12 +30,16 @@ export const createUser=async(req,res)=>{
     }
 
     const token=jwt.sign({user_id:newUser._id,email},process.env.SECRET_KEY,{expiresIn:"1h"});
-
+    
+    const options={
+        expires: new Date(Date.now() + 1*60*60*1000),
+        httpOnly:true
+    }
     newUser.token=token;
 
-    res.status(200).json({
+    res.status(200).cookie('jwtoken',token,options).json({
         newUser,
-        mas:"User created succesfully."
+        msg:"User created succesfully."
 
     });
 
