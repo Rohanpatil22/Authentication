@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 
@@ -18,6 +19,14 @@ function Login() {
 
         console.log(loginData);
     }
+
+    const checkUser=async()=>{
+
+        await axios.post("http://localhost:5000/api/v1/login",loginData)
+        .then((res)=>{
+            console.log(res);
+        })
+    }
   return (
     <>
         <div className='bg-neutral-600 w-1/3 m-auto mt-10 align-center p-5 rounded-2xl'>
@@ -32,7 +41,7 @@ function Login() {
                         <td><input type="password"  onChange={(e)=>{infoHandler('password',e.target.value)}} /></td>
                     </tr>
                     <tr>
-                        <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white'>Submit</button></td>
+                        <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white'  onClick={checkUser}>Submit</button></td>
                     </tr>
                 </tbody>
             </table>

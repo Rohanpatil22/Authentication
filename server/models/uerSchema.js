@@ -16,7 +16,7 @@ const userSchema=new mongoose.Schema({
         
     },
     password:{
-        tye:String,
+        type:String,
         
     },
     token:{
