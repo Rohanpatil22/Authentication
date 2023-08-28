@@ -8,6 +8,8 @@ function Login() {
     const [loginData,setLoginData]=useState({email:"",password:""})
     const infoHandler=(txt,val)=>{
 
+        
+
         if(txt==='email')
         {
             setLoginData((prevState=>{return{...prevState,email:val}}));
@@ -21,8 +23,11 @@ function Login() {
     }
 
     const checkUser=async()=>{
-
-        await axios.post("http://localhost:5000/api/v1/login",loginData)
+        const config={
+            headers:{"Content-Type" : "application/json"},
+            withCredentials:true
+        }
+        await axios.post("http://localhost:5000/api/v1/login",loginData,config)
         .then((res)=>{
             console.log(res);
         })

@@ -6,8 +6,12 @@ function Data(){
     
     const[dataflag,setDataflag]=useState(false)
 
+    const config={
+        headers:{"Content-Type" : "application/json"},
+        withCredentials:true
+    }
     const requestData=async()=>{
-        await axios.post("http://localhost:5000/api/v1/getData")
+        await axios.post("http://localhost:5000/api/v1/getData",config)
         .then((res)=>{
             console.log(res.data);
     

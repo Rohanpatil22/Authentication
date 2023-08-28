@@ -87,6 +87,7 @@ export const userLogin=async(req,res)=>{
 
 export const userData=async(req,res)=>{
 
+    console.log(req.cookie);
     res.status(200).json({
         msg:"working fine!!!"
     })
