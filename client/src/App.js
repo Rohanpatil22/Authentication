@@ -3,9 +3,11 @@ import Login from './login';
 import Signup from './signup';
 import Data from './data';
 import {Route,Routes,Link} from 'react-router-dom';
-import data from './data';
+
 
 function App() {
+
+  localStorage.setItem("authenticated",false);
   return (
     <>
     <div className='mt-10 text-center'>

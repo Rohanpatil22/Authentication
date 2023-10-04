@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
 
     const [loginData,setLoginData]=useState({email:"",password:""})
+    const navigate= useNavigate();
     const infoHandler=(txt,val)=>{
-
+   
         
 
         if(txt==='email')
@@ -30,6 +32,13 @@ function Login() {
         await axios.post("http://localhost:5000/api/v1/login",loginData,config)
         .then((res)=>{
             console.log(res);
+            alert(res.data.msg);
+            if(res.data.msg==="User authentication succesful!!!")
+            {
+                console.log("inside");
+                navigate("/data");
+                localStorage.setItem("authenticated",true);
+            }
         })
     }
   return (

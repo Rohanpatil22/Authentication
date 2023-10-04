@@ -32,6 +32,13 @@ function Signup() {
         await axios.post("http://localhost:5000/api/v1/create",signupData)
         .then((res)=>{
             console.log(res);
+            alert(res.data.msg);
+
+            if(res.data.msg==="User already exist.")
+            {
+                alert("User already exist.");
+                setSignupData({name:"",email:"",mobno:"",password:""})
+            }
         })
 
     }
