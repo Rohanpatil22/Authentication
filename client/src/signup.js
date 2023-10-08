@@ -34,6 +34,11 @@ function Signup() {
             console.log(res);
             alert(res.data.msg);
 
+            if(res.data.msg==="User created succesfully.")
+            {
+                setSignupData({name:"",email:"",mobno:"",password:""})
+            }
+
             if(res.data.msg==="User already exist.")
             {
                 alert("User already exist.");
@@ -49,19 +54,19 @@ function Signup() {
                 <tbody>
                     <tr>
                         <td className='p-4 text-white text-xl'>Name</td>
-                        <td><input type="text" onChange={(e)=>{changeHandler('name',e.target.value)}} /></td>
+                        <td><input type="text" value={signupData.name} onChange={(e)=>{changeHandler('name',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td className='p-4 text-white text-xl'>Mob no</td>
-                        <td><input type="text" maxLength="10" onChange={(e)=>{changeHandler('mobno',e.target.value)}} /></td>
+                        <td><input type="text" value={signupData.mobno} maxLength="10" onChange={(e)=>{changeHandler('mobno',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td className='p-4 text-white text-xl'>Email</td>
-                        <td><input type="email" onChange={(e)=>{changeHandler('email',e.target.value)}} /></td>
+                        <td><input type="email" value={signupData.email} onChange={(e)=>{changeHandler('email',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td className='p-4 text-white text-xl'>Password</td>
-                        <td><input type="password" onChange={(e)=>{changeHandler('password',e.target.value)}} /></td>
+                        <td><input type="password" value={signupData.password} onChange={(e)=>{changeHandler('password',e.target.value)}} /></td>
                     </tr>
                     <tr>
                         <td colSpan="2" className='text-center pt-6' ><button className='text-xl bg-teal-700 p-2 w-24  rounded-xl text-white' onClick={createUser}>Submit</button></td>

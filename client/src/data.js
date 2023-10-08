@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function Data(){
-    
+    const navigate=useNavigate();
   
     const [displayMsg,setDisplayMsg]=useState("")
     const config={
@@ -32,7 +32,8 @@ function Data(){
         }
         else{
             alert("Please login!!!");
-            setDisplayMsg("You do not have access to this page please login.")
+            setDisplayMsg("You do not have access to this page please login.");
+            navigate("/login")
         }
 
     }

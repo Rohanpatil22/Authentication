@@ -29,19 +29,19 @@ export const createUser=async(req,res)=>{
         throw Error("User not created successfully.");
     }
 
-    // const token=jwt.sign({user_id:newUser._id,email},process.env.SECRET_KEY,{expiresIn:"1h"});
+    const token=jwt.sign({user_id:newUser._id,email},process.env.SECRET_KEY,{expiresIn:"1h"});
     
-    // const options={
-    //     expires: new Date(Date.now() + 1*60*60*1000),
-    //     httpOnly:true
-    // }
-    // newUser.token=token;
+    const options={
+        expires: new Date(Date.now() + 1*60*60*1000),
+        httpOnly:true
+    }
+    newUser.token=token;
 
-    // res.status(200).cookie('jwtoken',token,options).json({
-    //     newUser,
-    //     msg:"User created succesfully."
+    res.status(200).cookie('jwtoken',token,options).json({
+        newUser,
+        msg:"User created succesfully."
 
-    // });
+    });
 
 }
 
